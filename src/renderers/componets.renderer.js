@@ -1,5 +1,5 @@
-const svgrect=(items="")=>{
-    return `<svg width="350" height="150" x="10" y="10" xmlns="http://www.w3.org/2000/svg">
+const svgrect = (items = "") => {
+  return `<svg width="350" height="150" x="10" y="10" xmlns="http://www.w3.org/2000/svg">
   <rect
     width="350"
     height="150"
@@ -7,11 +7,11 @@ const svgrect=(items="")=>{
     fill="#BDB9B3"
   />
   ${items}
-</svg>`
-}
+</svg>`;
+};
 
-const svgprogressbar=()=>{
-    return `<svg width="320" height="20" x="25" y="55" xmlns="http://www.w3.org/2000/svg">
+const svgprogressbar = () => {
+  return `<svg width="320" height="20" x="25" y="55" xmlns="http://www.w3.org/2000/svg">
   <rect width="300" height="20"  rx="10"  fill="#374151"/>
 
   <!-- Segment 1 -->
@@ -40,10 +40,10 @@ const svgprogressbar=()=>{
     <animate attributeName="width" from="0" to="50" dur="0.6s" begin="1.8s" fill="freeze"/>
   </rect>
 </svg>
-`
-}
-const svgtext=(text)=>{
-    return `
+`;
+};
+const svgtext = (text) => {
+  return `
   <text
     x="150"
     y="30"
@@ -55,33 +55,28 @@ const svgtext=(text)=>{
   >
     ${text}
   </text>
-  `
-}
-const svgBullets=({x,y,colour="#22c55e",text="Language"})=>{
-    return `
+  `;
+};
+const svgBullets = (x, y, colour = "#22c55e", text = "Language") => {
+  return `
     <svg
     width="75"
     height="20"
     x="${x}%"
-    y="${y}%"
-    >
-    <rect fill=${colour} height="10" width="10" rx="5" />
+    y="${y}%">
+    <rect fill="${colour}" height="10" width="10" rx="5" />
     <text fill="white" font-size="13" y="10" x="12" font-family="Tahoma" >${text}</text>
     </svg>
-    `
-}
-const BulletPointSection=`
+    `;
+};
+const BulletPointSection = `
    <svg
     x="25"
     y="80"
     width="300"
     height="60"
     >
-${svgBullets({ x: 0, y: 0 })}
-${svgBullets({ x: 25, y: 0 })}
-${svgBullets({ x: 50, y: 0 })}
-${svgBullets({ x: 75, y: 0 })}
-${svgBullets({ x: 0, y: 50 })}
-  <svg/>
-`
-export {svgrect,svgprogressbar,svgtext,svgBullets,BulletPointSection}
+${svgBullets(0, 0, "#22c55e")}
+  </svg>
+`;
+export { svgrect, svgprogressbar, svgtext, svgBullets, BulletPointSection };
