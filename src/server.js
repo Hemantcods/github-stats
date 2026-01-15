@@ -2,7 +2,7 @@ import app from './app.js'
 const port = 3000
 
 app.get('/', (req, res) => {
-  // res.setHeader("Content-Type", "image/svg+xml");  
+  res.setHeader("Content-Type", "image/svg+xml");  
   console.log("server is running")
   res.send("Hello World!")
 })
