@@ -1,6 +1,6 @@
 import gitfetch from "../utils/github.axios.js";
 
-import { getRepo } from "../../data/data.dummy.js";
+import { getRepo } from "../data/data.dummy.js";
 
 const getRepos = async (username) => {
   if (getRepo) {
