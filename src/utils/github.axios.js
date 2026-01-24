@@ -1,10 +1,12 @@
+import dotenv from "dotenv";
+dotenv.config();
 import axios from "axios";
 
 const github_axios = axios.create({
   baseURL: "https://api.github.com",
   headers: {
     Accept: "application/vnd.github+json",
-    // Authorization: `token ${process.env.GITHUB_TOKEN}`,
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
   },
 });
 // Interceptor to catch errors and return full info

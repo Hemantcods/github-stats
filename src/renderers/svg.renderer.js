@@ -17,8 +17,8 @@ const percentSvg=(language_percent)=>{
     for(const lang of sortedLanguages){
         sortedPercentage.push(language_percent[lang])
     }
-    console.log(sortedLanguages)
-    console.log(sortedPercentage)
+    // console.log(sortedLanguages)
+    // console.log(sortedPercentage)
     return svgrect(svgprogressbar(sortedPercentage,colors)+svgtext("Top Languages")+BulletPointSection(sortedLanguages,colors))
 }
 export {DefaultSvg,percentSvg}

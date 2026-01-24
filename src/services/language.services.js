@@ -3,7 +3,8 @@ import gitfetch from "../utils/github.axios.js";
 import { getRepo } from "../data/data.dummy.js";
 
 const getRepos = async (username) => {
-  if (getRepo) {
+  if (!getRepo) {
+    console.log("user")
     return getRepo;
   } else {
     try {
@@ -50,4 +51,4 @@ const createPercentage = async (username) => {
   return language_percent; // combined language usage
 };
 
-export { getRepos, languageData, createPercentage };
+export { getRepos, languageData, createPercentage};
