@@ -7,8 +7,10 @@ const createStats = async (req, res) => {
   res.setHeader("Content-Type", "image/svg+xml");
 //   http caching telling browser to store the response
   res.setHeader("Cache-Control", "public, max-age=600, s-maxage=600");
+  console.log("request for",username)
   const cached = getSvgCache(username);
   if (cached) return res.send(cached);
+  console.log("cache miss for",username)
   const language_percent = await createPercentage(username);
   const svg = percentSvg(language_percent);
   setSvgCache(username, svg);

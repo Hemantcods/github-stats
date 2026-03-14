@@ -10,8 +10,8 @@ const percentSvg=(language_percent)=>{
     let sortedLanguages = Object.keys(language_percent).sort(
     (a, b) => Number(language_percent[b]) - Number(language_percent[a])
   );
-    if (sortedLanguages>6){
-        sortedLanguages=sortedarray.slice(0,7)
+    if (sortedLanguages.length > 6){
+        sortedLanguages = sortedLanguages.slice(0,7)
     }
     let sortedPercentage=[]
     for(const lang of sortedLanguages){

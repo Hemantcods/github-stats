@@ -1,6 +1,7 @@
 const svgCache=new Map();
 
 export function getSvgCache(username){
+    console.log("checking cache for",username)
     const item=svgCache.get(username)
     if (!item) return null
     if (Date.now()>item.expiry){

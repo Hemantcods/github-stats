@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config()
 import axios from "axios";
 
 const github_axios = axios.create({
@@ -10,7 +10,7 @@ const github_axios = axios.create({
   },
 });
 // Interceptor to catch errors and return full info
-axios.interceptors.response.use(
+github_axios.interceptors.response.use(
   (response) => response,
   (error) =>
     Promise.reject(error.response && error.response.data) ||
