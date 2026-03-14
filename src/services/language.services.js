@@ -1,10 +1,12 @@
 import gitfetch from "../utils/github.axios.js";
-import { getRepo, languageData as dummyLang } from "../data/data.dummy.js";
+
+const dummyRepos = ["Backend_learning", "chat-app"];
+const dummyLang = { JavaScript: "86.5", CSS: "0.2", HTML: "0.3", python: "10", rust: "2", node: "1" };
 
 const getRepos = async (username) => {
   if (!process.env.GITHUB_TOKEN) {
     console.log("no token, using dummy repos for", username);
-    return getRepo;
+    return dummyRepos;
   } else {
     console.log("token present, trying to fetch repos")
     try {
@@ -14,7 +16,7 @@ const getRepos = async (username) => {
     } catch (error) {
       if (error.response && error.response.status === 401) {
         console.log("token invalid, using dummy repos");
-        return getRepo;
+        return dummyRepos;
       } else {
         console.log(error);
         return [];
