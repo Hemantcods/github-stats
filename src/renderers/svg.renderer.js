@@ -2,7 +2,7 @@ import { colors } from "../data/data.dummy.js";
 import { svgrect,svgprogressbar, svgtext,BulletPointSection } from "./componets.renderer.js"
 
 const DefaultSvg=()=>{
-    return svgrect(svgprogressbar()+svgtext("Top Languages")+BulletPointSection)
+    return svgrect(svgprogressbar([], [])+svgtext("Loading...")+BulletPointSection([], []))
 }
 
 const percentSvg=(language_percent)=>{
