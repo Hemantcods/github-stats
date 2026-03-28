@@ -14,7 +14,7 @@ const getRepos = async (username) => {
       console.log("fetch successful")
       return data.map((chunk) => chunk.name);
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error && error.response && error.response.status === 401) {
         console.log("token invalid, using dummy repos");
         return dummyRepos;
       } else {
@@ -36,7 +36,7 @@ const languageData = async (username, repoName) => {
       console.log("language fetch successful for", repoName);
       return language.data;
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error && error.response && error.response.status === 401) {
         console.log("token invalid, using dummy language data for", repoName);
         return dummyLang;
       } else {
@@ -54,7 +54,7 @@ const createPercentage = async (username) => {
   const totalLanguages = {};
 
   // loop through repos sequentially
-  const less=Math.min(repos.length,) // limit to 20 repos to avoid hitting rate limits and for better performance
+  const less=Math.min(repos.length,10) // limit to 20 repos to avoid hitting rate limits and for better performance
   repos= repos.slice(0,less) // limit to 20 repos to avoid hitting rate limits and for better performance
   for (const repo of repos) {
     const langObj = await languageData(username, repo); // await each call

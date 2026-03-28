@@ -9,11 +9,9 @@ const github_axios = axios.create({
     Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
   },
 });
-// Interceptor to catch errors and return full info
+// Interceptor to catch errors and return full error object
 github_axios.interceptors.response.use(
   (response) => response,
-  (error) =>
-    Promise.reject(error.response && error.response.data) ||
-    "something went wrong",
+  (error) => Promise.reject(error)
 );
 export default github_axios;
