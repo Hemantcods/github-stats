@@ -15,20 +15,25 @@ const createStats = async (req, res) => {
   }
   console.log("cache miss for", username);
 
-  // Data not ready: send loading SVG immediately with NO caching
-  // This ensures loading placeholder won't be cached and will be fetched fresh each time
-  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  const loadingSvg = DefaultSvg();
-  res.send(loadingSvg);
-
-  // Fetch data in background to populate cache for future requests
-  createPercentage(username).then(language_percent => {
+  try {
+    // Fetch data synchronously (wait for it) before responding
+    const language_percent = await createPercentage(username);
     const svg = percentSvg(language_percent);
+
+    // Cache the result for future requests
     setSvgCache(username, svg);
     console.log("cached stats for", username);
-  }).catch(err => {
-    console.error("failed to fetch stats in background:", err);
-  });
+
+    // Send the actual stats SVG with caching headers
+    res.setHeader("Cache-Control", "public, max-age=600, s-maxage=600");
+    res.send(svg);
+  } catch (error) {
+    console.error("failed to fetch stats:", error);
+    // On error, send loading/error placeholder (no cache)
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    const errorSvg = DefaultSvg();
+    res.send(errorSvg);
+  }
 };
 
 export { createStats };
